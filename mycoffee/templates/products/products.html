@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Products
+{% endblock %}
+
+{% block body %}
+<div class="my-form container p-5 my-5 rounded border border-warning">
+    <form>
+        <h2 class="text-center">Products<br></h2>
+        <hr>
+        <section>
+                <div class="container-fluid">
+                    <div class="row p-5" >
+                        {% if products %}
+                            {% for product in products %}
+                                <div>
+                                <div class="card m-2" style="width: 18rem;">
+                                    <img src="{{product.photo.url}}" class="card-img-top" alt="{{product.name}}">
+                                    <div class="card-body">
+                                    <h5 class="card-title">{{product.name}}</h5>
+                                    <p class="card-text text-truncate">{{product.description}}</p>
+                                    <a href="{% url 'product' product.pk %}" class="btn btn-warning">Show Details</a>
+                                    </div>
+                                </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <h2 class="text-center" >Not Found Products, <a href="{% url 'products' %}" class="text-dark">All Products</a></h2>
+                        {% endif %}
+                    </div>
+                </div>
+        </section>
+    </form>
+
+</div>
+
+{% endblock %}

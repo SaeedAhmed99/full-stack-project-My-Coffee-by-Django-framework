@@ -1,0 +1,51 @@
+#header {
+    background-color: #5A020Cce;
+    color: white !important;
+}
+
+#branding h1, 
+#branding h1 a:link, 
+#branding h1 a:visited {
+    color: bisque !important;
+}
+
+.module h2, 
+.module caption, 
+.inline-group h2 {
+    background-color: #6e121dce !important;
+    color: white !important;
+}
+
+div.breadcrumbs {
+    background-color: #6e121dce !important;
+}
+
+.button, 
+input[type=submit], 
+input[type=button], 
+.submit-row input, 
+a.button,
+.button.default, 
+input[type=submit].default, 
+.submit-row input.default {
+    background-color: #6e121dce !important ;
+    color: white !important;
+}
+
+.button:active, 
+input[type=submit]:active, 
+input[type=button]:active, 
+.button:focus, 
+input[type=submit]:focus, 
+input[type=button]:focus, 
+.button:hover, 
+input[type=submit]:hover, 
+input[type=button]:hover,
+.button.default:active, 
+input[type=submit].default:active, 
+.button.default:focus, 
+input[type=submit].default:focus, 
+.button.default:hover, 
+input[type=submit].default:hover {
+    background-color: #35080ece !important;
+}

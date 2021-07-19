@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block body %}
+
+<div class="my-form container p-5 my-5 rounded border border-warning">
+    <h2 class="text-center">Profile</h2>
+    <hr>
+    {% if request.user.is_authenticated %}
+        <form method="POST">
+            {% csrf_token %}
+            {% include "partials/_alerts.html" %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputFirstName">First Name</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="fname" 
+                    value="{{request.user.first_name}}"
+                    id="inputFirstName" 
+                    required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="text" class="form-control" name="lname" value="{{request.user.last_name}}" id="inputLastName" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" name="address1" value="{{request.user.userpro.address1}}" id="inputAddress" placeholder="1234 Main St" required>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Address 2</label>
+                <input type="text" class="form-control" name="address2" value="{{request.user.userpro.address2}}" id="inputAddress2" placeholder="Apartment, studio, or floor" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" name="city" value="{{request.user.userpro.city}}" id="inputCity" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputZip">State</label>
+                    <input type="text" class="form-control" name="state" value="{{request.user.userpro.state}}" id="inputZip" required>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" name="zip" value="{{request.user.userpro.zip_number}}" id="inputZip" placeholder="11111" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control border border-warning" name="email" value="{{request.user.email}}" id="inputEmail" placeholder="name@example.com" readonly required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputUsername">Username</label>
+                    <input type="text" class="form-control border border-warning" name="username" value="{{request.user.username}}" placeholder="username" id="inputUsername" readonly required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" name="password" value="{{request.user.password}}" id="inputPassword" required>
+                </div>
+            </div>
+
+            <button type="submit" name="btnprofile" class="btn btn-warning">Save Changes</button>
+        </form>
+    {% else %}
+        <h4 class="alert alert-danger">you must be 
+            <a class="text-dark" href="{% url 'login' %}">log in</a>
+        </h4>
+    {% endif %}
+</div>
+
+{% endblock %}
